@@ -43,7 +43,7 @@ Three methods are provided:
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/Bear-Tag-TOC-Indexer.git
+git clone https://github.com/xfto/Bear-Tag-TOC-Indexer.git
 cd react-bear
 
 # 2. Install dependencies
