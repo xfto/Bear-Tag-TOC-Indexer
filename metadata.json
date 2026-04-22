@@ -1,0 +1,6 @@
+{
+  "name": "Bear Tag Automator",
+  "description": "Automate the creation of tag indexes in Bear.app using macOS Shortcuts or Scripts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

@@ -1,0 +1,110 @@
+# Bear Tag TOC Creator
+
+> Scan. Index. Navigate. — A macOS desktop app that generates a clickable tag index inside [Bear](https://bear.app).
+
+![Version](https://img.shields.io/badge/version-2.0.0-red) ![Platform](https://img.shields.io/badge/platform-macOS-lightgrey) ![Electron](https://img.shields.io/badge/electron-30-blue) ![React](https://img.shields.io/badge/react-19-61DAFB)
+
+---
+
+## What it does
+
+Bear has no built-in table of contents for tags. This app reads your local Bear SQLite database, extracts every tag, and creates a new Bear note containing a clickable `bear://` deep-link for each one — giving you a navigable tag index in seconds.
+
+Three methods are provided:
+
+- **macOS Shortcut** — uses the Shortcuts app, safest option, syncs to iPhone/iPad
+- **Fish Script** — reads the Bear SQLite database directly via terminal, instant results
+- **Manual Mode** — type tags by hand and push them to Bear without running any script
+
+---
+
+## Stack
+
+| Layer | Technology |
+|---|---|
+| UI | React 19 + Vite 8 |
+| Styling | Tailwind CSS v4 |
+| Animations | Framer Motion 12 |
+| Icons | Lucide React |
+| Desktop | Electron 30 |
+| Packaging | electron-builder |
+
+---
+
+## Requirements
+
+- macOS (primary target; Windows/Linux builds available via electron-builder)
+- Node.js 18+
+- For the Fish Script method: fish shell + Terminal with Full Disk Access enabled in System Settings
+
+---
+
+## Getting started
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/YOUR_USERNAME/Bear-Tag-TOC-Indexer.git
+cd react-bear
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the dev server (browser, hot-reload)
+npm run dev
+```
+
+---
+
+## Workflow
+
+```bash
+npm run dev            # develop in browser with hot-reload
+npm run build          # compile production bundle to dist/
+npm run electron       # test the production build in Electron
+npm run electron:build # package as .dmg / .exe / .AppImage
+```
+
+> Only run `npm run build` when you are ready to test in Electron or ship.  
+> The dev server (`npm run dev`) reloads automatically on every file save.
+
+---
+
+## Electron notes
+
+The app runs with `contextIsolation: true` and `nodeIntegration: false` for security. A `preload.js` file bridges any necessary IPC between the renderer and main process.
+
+When loading from `file://` in production, Vite is configured with `base: './'` to ensure all asset paths resolve correctly.
+
+---
+
+## Distribution
+
+`npm run electron:build` produces platform-specific output in `release/`:
+
+| Platform | Format |
+|---|---|
+| macOS | `.dmg` |
+| Windows | NSIS installer |
+| Linux | `.AppImage` |
+
+---
+
+## Privacy
+
+The Fish Script method reads your Bear database file locally at:
+
+```
+~/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data/database.sqlite
+```
+
+No data leaves your machine. Terminal may require **Full Disk Access** in System Settings → Privacy & Security to read this path.
+
+---
+
+## License
+
+MIT
+
+---
+
+*Developed by [Fabio Tosto](mailto:fabio@tosto.se) using Google AI Studio, Claude & VS Code*

@@ -1,0 +1,32 @@
+/* App.css */
+
+.header {
+  background: white;
+  border-bottom: 1px solid rgba(210, 210, 215, 0.5);
+  padding: 64px 24px 48px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tab-active {
+  background: white;
+  color: #1D1D1F;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tab-inactive {
+  background: transparent;
+  color: #86868B;
+  box-shadow: none;
+}
