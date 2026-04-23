@@ -60,6 +60,30 @@ const tabStyle = (active: boolean) => ({
   WebkitAppRegion: 'no-drag' as const,
 });
 
+const buttonStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: 8,
+  padding: '8px 16px',
+  borderRadius: 12,
+  fontSize: 14,
+  fontWeight: 700,
+  border: 'none',
+  cursor: 'pointer',
+  transition: 'all 0.15s',
+};
+
+const inputStyle = {
+  flex: 1,
+  background: '#F5F5F7',
+  borderRadius: 12,
+  padding: '8px 16px',
+  border: '2px solid transparent',
+  outline: 'none',
+  fontSize: 14,
+  fontFamily: 'inherit',
+};
+
 function Step({ num, title, children }: { num: number; title: string; children: React.ReactNode }) {
   return (
     <div style={{ display: 'flex', gap: '24px' }}>
@@ -84,14 +108,12 @@ function Step({ num, title, children }: { num: number; title: string; children: 
 
 function ShortcutTab() {
   return (
-    <div style={{ background: 'white', borderRadius: 24, padding: 32, border: '1px solid rgba(210,210,215,0.5)' }}>
-      <h2 style={{ fontSize: 24, fontWeight: 700, marginBottom: 24, marginTop: 0 }}>Build the macOS Shortcut</h2>
+    <div className="tab-content">
+      <h2>Build the macOS Shortcut</h2>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
         <Step num={1} title="Open the Shortcuts app">
           Create a new shortcut named{' '}
-          <span style={{ fontFamily: 'monospace', background: '#F5F5F7', padding: '2px 8px', borderRadius: 4, fontStyle: 'italic' }}>
-            "Bear Tag TOC Indexer"
-          </span>.
+          <span className="monospace">"Bear Tag TOC Indexer"</span>.
         </Step>
         <Step num={2} title="Add Bear Action">
           Search for the <strong>Bear</strong> app actions and add{' '}
@@ -112,16 +134,11 @@ function ShortcutTab() {
         </Step>
       </div>
 
-      <div style={{
-        marginTop: 32, padding: 24, background: '#0071E3', borderRadius: 24,
-        color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      }}>
-        <div>
-          <h3 style={{ fontWeight: 700, fontSize: 18, marginTop: 0, marginBottom: 8 }}>Why Shortcuts?</h3>
-          <p style={{ opacity: 0.8, fontSize: 14, margin: 0 }}>
-            It&apos;s the safest way and syncs automatically with your iPhone and iPad.
-          </p>
-        </div>
+      <div className="why-shortcuts">
+        <h3>Why Shortcuts?</h3>
+        <p style={{ opacity: 0.8, fontSize: 14, margin: 0 }}>
+          It&apos;s the safest way and syncs automatically with your iPhone and iPad.
+        </p>
         <MousePointer2 style={{ width: 32, height: 32, opacity: 0.5 }} />
       </div>
     </div>
@@ -139,8 +156,8 @@ function ScriptTab() {
   };
 
   return (
-    <div style={{ background: 'white', borderRadius: 24, padding: 32, border: '1px solid rgba(210,210,215,0.5)' }}>
-      <h2 style={{ fontSize: 24, fontWeight: 700, marginBottom: 8, marginTop: 0 }}>Fish Shell Automation</h2>
+    <div className="tab-content">
+      <h2>Fish Shell Automation</h2>
       <p style={{ color: '#86868B', marginBottom: 32, fontSize: 14 }}>
         Optimized for <code>fish</code>. Reads the local SQLite database directly and opens a new note in Bear instantly.
       </p>
@@ -155,13 +172,10 @@ function ScriptTab() {
             <button
               onClick={copyScript}
               style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                padding: '8px 16px', borderRadius: 12, fontSize: 12,
-                fontWeight: 700, border: 'none', cursor: 'pointer',
+                ...buttonStyle,
                 background: copied ? '#22c55e' : 'white',
                 color: copied ? 'white' : 'black',
                 boxShadow: '0 1px 4px rgba(0,0,0,0.15)',
-                transition: 'all 0.15s',
               }}
             >
               {copied ? <Check size={12} /> : <Copy size={12} />}
@@ -180,21 +194,21 @@ function ScriptTab() {
       </div>
 
       <div style={{ marginTop: 24, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-        <div style={{ padding: 20, background: '#F5F5F7', borderRadius: 16, border: '1px solid rgba(210,210,215,0.5)' }}>
+        <div className="info-box">
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
             <Terminal size={16} color="#86868B" />
-            <h4 style={{ fontWeight: 700, fontSize: 13, margin: 0 }}>How to run</h4>
+            <h4>How to run</h4>
           </div>
           <ol style={{ color: '#86868B', fontSize: 12, paddingLeft: 16, margin: 0, lineHeight: 2 }}>
-            <li>Open <strong style={{ color: '#1D1D1F' }}>Terminal.app</strong></li>
+            <li>Open <strong>Terminal.app</strong></li>
             <li>Paste the code above</li>
             <li>Press <kbd style={{ background: 'white', border: '1px solid #D2D2D7', borderRadius: 4, padding: '0 4px' }}>Enter</kbd></li>
           </ol>
         </div>
-        <div style={{ padding: 20, background: '#F5F5F7', borderRadius: 16, border: '1px solid rgba(210,210,215,0.5)' }}>
+        <div className="info-box">
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
             <ShieldAlert size={16} color="#EB4132" />
-            <h4 style={{ fontWeight: 700, fontSize: 13, margin: 0 }}>Full Disk Access</h4>
+            <h4>Full Disk Access</h4>
           </div>
           <p style={{ color: '#86868B', fontSize: 12, margin: 0, lineHeight: 1.6 }}>
             On macOS, Terminal may need <strong>Full Disk Access</strong> in System Settings to read Bear&apos;s database.
@@ -221,8 +235,8 @@ function ManualIndexer() {
   };
 
   return (
-    <div style={{ background: 'white', borderRadius: 24, padding: 32, border: '1px solid rgba(210,210,215,0.5)' }}>
-      <h2 style={{ fontSize: 24, fontWeight: 700, marginBottom: 8, marginTop: 0 }}>Manual Tag Indexer</h2>
+    <div className="tab-content">
+      <h2>Manual Tag Indexer</h2>
       <p style={{ color: '#86868B', marginBottom: 32, fontSize: 14 }}>
         Can&apos;t run scripts? Build your list here and send it straight to Bear.
       </p>
@@ -231,11 +245,7 @@ function ManualIndexer() {
         <div>
           <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
             <input
-              style={{
-                flex: 1, background: '#F5F5F7', borderRadius: 12, padding: '8px 16px',
-                border: '2px solid transparent', outline: 'none', fontSize: 14,
-                fontFamily: 'inherit',
-              }}
+              style={inputStyle}
               placeholder="Tag name..."
               value={newTag}
               onChange={(e) => setNewTag(e.target.value)}
@@ -246,9 +256,8 @@ function ManualIndexer() {
             <button
               onClick={addTag}
               style={{
-                background: '#0071E3', color: 'white', padding: '8px 16px',
-                borderRadius: 12, fontWeight: 700, border: 'none', cursor: 'pointer',
-                fontSize: 14,
+                ...buttonStyle,
+                background: '#0071E3', color: 'white',
               }}
             >
               Add
@@ -256,10 +265,7 @@ function ManualIndexer() {
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {tags.map((t, i) => (
-              <span key={i} style={{
-                background: '#E3E3E8', padding: '4px 12px', borderRadius: 999,
-                fontSize: 12, fontWeight: 700, display: 'flex', alignItems: 'center', gap: 6,
-              }}>
+              <span key={i} className="tag">
                 #{t}
                 <button
                   onClick={() => setTags(tags.filter((_, idx) => idx !== i))}
@@ -290,8 +296,8 @@ function ManualIndexer() {
               window.location.href = url;
             }}
             style={{
-              background: '#1D1D1F', color: 'white', padding: '12px 0',
-              borderRadius: 12, fontWeight: 700, border: 'none', cursor: 'pointer',
+              ...buttonStyle,
+              background: '#1D1D1F', color: 'white',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               fontSize: 14,
             }}
@@ -314,8 +320,8 @@ export default function App() {
   return (
     <div style={{ minHeight: '100vh', background: '#F5F5F7', color: '#1D1D1F', fontFamily: 'system-ui, sans-serif', paddingBottom: 80 }}>
       {/* Header */}
-      <header style={{ background: 'white', borderBottom: '1px solid rgba(210,210,215,0.5)', paddingTop: 64, paddingBottom: 48, padding: '64px 24px 48px' }}>
-        <div style={{ maxWidth: 896, margin: '0 auto' }}>
+      <header className="app-header">
+        <div className="container">
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}>
             <div style={{
               background: '#EB4132', padding: 12, borderRadius: 16,
@@ -324,17 +330,14 @@ export default function App() {
               <Zap style={{ color: 'white', width: 32, height: 32, fill: 'white' }} />
             </div>
             <div>
-              <h1 style={{ fontSize: 36, fontWeight: 700, margin: 0, letterSpacing: -0.5 }}>Bear Tag TOC Creator</h1>
+              <h1>Bear Tag TOC Creator</h1>
               <p style={{ color: '#86868B', fontSize: 18, margin: '4px 0 0', fontStyle: 'italic', fontWeight: 500 }}>
                 Scan. Index. Navigate.
               </p>
             </div>
           </div>
 
-          <div style={{
-            background: '#FFF2F2', border: '1px solid rgba(235,65,50,0.1)',
-            borderRadius: 16, padding: 16, display: 'flex', alignItems: 'flex-start', gap: 16,
-          }}>
+          <div className="warning-box">
             <ShieldAlert style={{ width: 20, height: 20, color: '#EB4132', flexShrink: 0, marginTop: 2 }} />
             <p style={{ fontSize: 14, color: '#CC3226', lineHeight: 1.6, margin: 0 }}>
               <strong>Local Access Only:</strong> Standard web browsers cannot access your Mac&apos;s private files for security.
@@ -345,13 +348,12 @@ export default function App() {
       </header>
 
       {/* Main */}
-      <main style={{ maxWidth: 896, margin: '48px auto 0', padding: '0 24px' }}>
-        {/* Tab bar */}
+      <main className="app-main">
         <div style={{
           display: 'flex', background: '#E3E3E8', padding: 4, borderRadius: 16,
           marginBottom: 32, width: 'fit-content',
-          WebkitAppRegion: 'no-drag' as const,
-        }}>
+          WebkitAppRegion: 'no-drag',
+        } as React.CSSProperties}>
           {[
             { id: 'shortcut', label: 'macOS Shortcut', Icon: Settings2 },
             { id: 'script', label: 'Fish Script', Icon: Code2 },
@@ -406,11 +408,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer style={{
-        maxWidth: 896, margin: '64px auto 0', padding: '0 24px',
-        textAlign: 'center', fontSize: 11, color: '#86868B',
-        textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 700,
-      }}>
+      <footer className="app-footer">
         Crafted for Bear Enthusiasts &bull; v2.0
         <div style={{ marginTop: 8, textTransform: 'none', letterSpacing: 'normal', fontSize: 11, fontWeight: 500 }}>
           Developed by{' '}

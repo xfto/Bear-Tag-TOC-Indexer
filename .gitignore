@@ -2,8 +2,14 @@ node_modules/
 build/
 dist/
 coverage/
-relea
+release/
 .DS_Store
 *.log
 .env*
 !.env.example
+.aider*
+Claude.md
+CODING_STANDARDS.md
+README.md
+.gitignore
+LICENSE
