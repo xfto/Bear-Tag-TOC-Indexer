@@ -318,7 +318,7 @@ export default function App() {
   }, []);
 
   return (
-    <div style={{ minHeight: '100vh', background: '#F5F5F7', color: '#1D1D1F', fontFamily: 'system-ui, sans-serif', paddingBottom: 80 }}>
+    <div className="app-shell" style={{ color: '#1D1D1F', fontFamily: 'system-ui, sans-serif' }}>
       {/* Header */}
       <header className="app-header">
         <div className="container">

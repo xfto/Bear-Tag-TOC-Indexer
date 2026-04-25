@@ -20,13 +20,15 @@
     "appId": "com.bear.myapp",
     "productName": "bear.app Tag TOC Creator",
     "asar": true,
+    "icon": "public/icon.png",
     "files": [
       {
         "from": ".",
         "filter": [
           "main.cjs",
           "preload.js",
-          "package.json"
+          "package.json",
+          "public/icon.png"
         ]
       },
       {
@@ -39,13 +41,16 @@
       "output": "release"
     },
     "mac": {
+      "icon": "public/icon.icns",
       "target": "dmg",
       "category": "public.app-category.utilities"
     },
     "win": {
+      "icon": "public/icon.ico",
       "target": "nsis"
     },
     "linux": {
+      "icon": "public/icon.png",
       "target": "AppImage"
     }
   },

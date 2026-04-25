@@ -35,7 +35,8 @@ Three methods are provided:
 
 - macOS (primary target; Windows/Linux builds available via electron-builder)
 - Node.js 18+
-- For the Fish Script method: fish shell + Terminal with Full Disk Access enabled in System Settings
+- Bear installed, if you want to create notes via `bear://` links
+- For the Fish Script method: fish shell, `sqlite3`, Python 3, and Terminal with Full Disk Access enabled in System Settings
 
 ---
 
@@ -44,7 +45,7 @@ Three methods are provided:
 ```bash
 # 1. Clone the repo
 git clone https://github.com/xfto/Bear-Tag-TOC-Indexer.git
-cd react-bear
+cd bear-tag-automator
 
 # 2. Install dependencies
 npm install
@@ -75,6 +76,14 @@ The app runs with `contextIsolation: true` and `nodeIntegration: false` for secu
 
 When loading from `file://` in production, Vite is configured with `base: './'` to ensure all asset paths resolve correctly.
 
+Application icon assets live in `public/`:
+
+- `public/icon.png` — runtime/Linux icon
+- `public/icon.icns` — macOS package icon
+- `public/icon.ico` — Windows installer icon
+
+macOS shows the packaged icon after running `npm run electron:build`; plain `npm run electron` may still use development/runtime behavior depending on the platform cache.
+
 ---
 
 ## Distribution
@@ -86,6 +95,8 @@ When loading from `file://` in production, Vite is configured with `base: './'` 
 | macOS | `.dmg` |
 | Windows | NSIS installer |
 | Linux | `.AppImage` |
+
+Packaged builds are written to `release/`.
 
 ---
 

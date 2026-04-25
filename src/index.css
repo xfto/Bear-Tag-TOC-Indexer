@@ -1,1 +1,130 @@
 @import "tailwindcss";
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(235, 65, 50, 0.12), transparent 32rem),
+    #E9E9ED;
+}
+
+.app-shell {
+  width: min(1120px, calc(100vw - 48px));
+  margin: 48px auto;
+  background: #F5F5F7;
+  border: 1px solid rgba(210, 210, 215, 0.7);
+  border-radius: 32px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+
+.app-header,
+.app-main,
+.app-footer {
+  max-width: 920px;
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.app-header {
+  padding-top: 56px;
+  padding-bottom: 32px;
+}
+
+.app-main {
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.app-footer {
+  padding-top: 24px;
+  padding-bottom: 32px;
+  color: #86868B;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.container {
+  width: 100%;
+}
+
+.tab-content {
+  background: white;
+  border: 1px solid rgba(210, 210, 215, 0.55);
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+}
+
+.warning-box,
+.why-shortcuts,
+.info-box {
+  border-radius: 20px;
+  border: 1px solid rgba(210, 210, 215, 0.55);
+}
+
+.warning-box {
+  display: flex;
+  gap: 12px;
+  background: rgba(235, 65, 50, 0.08);
+  padding: 16px;
+}
+
+.why-shortcuts,
+.info-box {
+  background: #F5F5F7;
+  padding: 20px;
+}
+
+.why-shortcuts {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.info-box h4,
+.why-shortcuts h3 {
+  margin: 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #F5F5F7;
+  border: 1px solid rgba(210, 210, 215, 0.7);
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #1D1D1F;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    width: min(100vw - 24px, 1120px);
+    margin: 12px auto;
+    border-radius: 24px;
+  }
+
+  .app-header,
+  .app-main,
+  .app-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .tab-content {
+    padding: 20px;
+  }
+}
