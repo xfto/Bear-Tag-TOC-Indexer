@@ -118,4 +118,4 @@ MIT
 
 ---
 
-*Developed by [Fabio Tosto](mailto:fabio@tosto.se) using Google AI Studio, Claude & VS Code*
+*Developed by [Fabio Tosto](mailto:fabio@tosto.se) using Google AI Studio, Claude, OpenAI Codex CLI, and VS Code*
