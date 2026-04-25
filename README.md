@@ -1,8 +1,8 @@
 # Bear Tag TOC Creator
 
-> Scan. Index. Navigate. — A macOS desktop app that generates a clickable tag index inside [Bear](https://bear.app).
+> Scan. Index. Navigate. — An Electron desktop app that generates a clickable tag index inside [Bear](https://bear.app).
 
-![Version](https://img.shields.io/badge/version-2.0.0-red) ![Platform](https://img.shields.io/badge/platform-macOS-lightgrey) ![Electron](https://img.shields.io/badge/electron-30-blue) ![React](https://img.shields.io/badge/react-19-61DAFB)
+![Version](https://img.shields.io/badge/version-2.0.0-red) ![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey) ![Electron](https://img.shields.io/badge/electron-30-blue) ![React](https://img.shields.io/badge/react-19-61DAFB)
 
 ---
 
@@ -88,7 +88,7 @@ macOS shows the packaged icon after running `npm run electron:build`; plain `npm
 
 ## Distribution
 
-`npm run electron:build` produces platform-specific output in `release/`:
+`npm run electron:build` packages desktop builds with electron-builder. On macOS, this configuration can produce:
 
 | Platform | Format |
 |---|---|
