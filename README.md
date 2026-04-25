@@ -12,7 +12,7 @@ Bear has no built-in table of contents for tags. This app reads your local Bear 
 
 Three methods are provided:
 
-- **macOS Shortcut** — uses the Shortcuts app, safest option, syncs to iPhone/iPad
+- **macOS Shortcut** — Mac-only helper workflow using Shortcuts; the desktop app can also be packaged for Windows and Linux
 - **Fish Script** — reads the Bear SQLite database directly via terminal, instant results
 - **Manual Mode** — type tags by hand and push them to Bear without running any script
 
